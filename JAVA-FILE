@@ -1,0 +1,52 @@
+package com.example.checkbox;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.checkbox.R;
+
+public class MainActivity extends AppCompatActivity {
+
+    CheckBox checkBox1, checkBox2, checkBox3;
+    Button submitButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        checkBox1 = findViewById(R.id.checkBox1);
+        checkBox2 = findViewById(R.id.checkBox2);
+        checkBox3 = findViewById(R.id.checkBox3);
+        submitButton = findViewById(R.id.submitButton);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder result = new StringBuilder("Selected Options:\n");
+
+                
+                if (checkBox1.isChecked()) {
+                    result.append("Option 1\n");
+                }
+                if (checkBox2.isChecked()) {
+                    result.append("Option 2\n");
+                }
+                if (checkBox3.isChecked()) {
+                    result.append("Option 3\n");
+                }
+
+                
+                if (result.toString().equals("Selected Options:\n")) {
+                    result.append("None");
+                }
+
+                Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}
